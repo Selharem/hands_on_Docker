@@ -1,11 +1,11 @@
 <?php
 $my_array = array("Breach","Brimstone","Cypher");
-$Valorants = array (
+/*$Valorants = array (
   array("Breach","Breach.png","go through terrain"),
   array("Brimstone","Brimstone.png","call down smoke grenades"),
   array("Cypher","Cypher.png","uses spy gadgets"),
   
-);
+);*/
 $Valorants = json_decode(file_get_contents('C:\wamp64\www\Valorant\data.json'),true);
 
 ?>
@@ -35,5 +35,38 @@ $Valorants = json_decode(file_get_contents('C:\wamp64\www\Valorant\data.json'),t
     </div>
 <?php }?>
 
+
+
+<div class="container">
+  <h2>Add a character</h2>
+  <form method="post">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" name="name">
+    </div>
+    <div class="form-group">
+      <label for="photo">Photo:</label>
+      <input type="text" class="form-control" id="photo" name="photo">
+    </div>
+    <div class="form-group">
+      <label for="characteristics">Characteristics:</label>
+      <input type="text" class="form-control" id="characteristics" name="characteristics">
+    </div>
+    <button type="submit" class="btn btn-primary" name="submit-btn" >Add</button>
+  </form>
+
+  <?php
+   if (isset($_POST["submit-btn"])) {
+      $myObj->name = $_POST['name'];
+      $myObj->photo = $_POST['photo'];
+      $myObj->characteristics = $_POST['characteristics'];
+      $myJSON = json_encode($myObj);
+      echo $myJSON;
+      file_put_contents($Valorants, $myJSON);
+   }
+  ?>
+
+
+</div>
 </body>
 </html>
