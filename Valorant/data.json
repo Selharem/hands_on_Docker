@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Breach",
+        "photo": "Breach.png",
+        "characteristics": "go through terrain"
+    },
+    {
+        "name": "Brimstone",
+        "photo": "Brimstone.png",
+        "characteristics": "call down smoke grenades"
+    },
+    {
+        "name": "Cypher",
+        "photo": "Cypher.png",
+        "characteristics": "uses spy gadgets"
+    }
+]
+
