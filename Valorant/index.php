@@ -13,7 +13,7 @@
 <body>
 
 <div class="container">
-  <h2>Add a character</h2>
+  <h2>Add a character APP2</h2>
   <form method="post">
     <div class="form-group">
       <label for="name">Name:</label>
@@ -31,17 +31,14 @@
   </form>
 
   <?php
-  function Add_character() {
    if (isset($_POST["submit-btn"])) {
       $myObj = new \stdClass();
       $myObj->name = $_POST['name'];
       $myObj->photo = $_POST['photo'];
       $myObj->characteristics = $_POST['characteristics'];
       $myJSON = json_encode($myObj);
-      echo $myJSON;
       array_push($Valorants, array("name" => $_POST['name'], "photo" =>  $_POST['photo'], "characteristics" =>  $_POST['characteristics']));
-    }
-  }
+   }
   ?>
 
 <?php for ($row = 0; $row < sizeof($Valorants); $row++) {?>
