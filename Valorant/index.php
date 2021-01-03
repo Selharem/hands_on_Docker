@@ -1,14 +1,7 @@
 <?php
-$my_array = array("Breach","Brimstone","Cypher");
-/*$Valorants = array (
-  array("Breach","Breach.png","go through terrain"),
-  array("Brimstone","Brimstone.png","call down smoke grenades"),
-  array("Cypher","Cypher.png","uses spy gadgets"),
-  
-);*/
-$Valorants = json_decode(file_get_contents('C:\wamp64\www\Valorant\data.json'),true);
-
+  $Valorants = json_decode(file_get_contents('C:\wamp64\www\Valorant\data.json'),true);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,24 +11,6 @@ $Valorants = json_decode(file_get_contents('C:\wamp64\www\Valorant\data.json'),t
     <title>Valorant</title>
 </head>
 <body>
-
-<?php for ($row = 0; $row < 3; $row++) {?>
-    <div class="row">
-      <div class="col-sm-6" style="width:20%">
-        <img class="card-img-top" src="<?php echo $Valorants[$row]["photo"] ?>" alt="Card image" style="width:100px">
-        <div class="card">
-          <div class="card-block">
-            <div class="card-body">
-              <h4 class="card-title"><?php echo $Valorants[$row]["name"] ?></h4>
-              <p class="card-text"><?php echo $Valorants[$row]["characteristics"] ?></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-<?php }?>
-
-
 
 <div class="container">
   <h2>Add a character</h2>
@@ -56,15 +31,38 @@ $Valorants = json_decode(file_get_contents('C:\wamp64\www\Valorant\data.json'),t
   </form>
 
   <?php
+  function Add_character() {
    if (isset($_POST["submit-btn"])) {
+      $myObj = new \stdClass();
       $myObj->name = $_POST['name'];
       $myObj->photo = $_POST['photo'];
       $myObj->characteristics = $_POST['characteristics'];
       $myJSON = json_encode($myObj);
       echo $myJSON;
-      file_put_contents($Valorants, $myJSON);
-   }
+      array_push($Valorants, array("name" => $_POST['name'], "photo" =>  $_POST['photo'], "characteristics" =>  $_POST['characteristics']));
+    }
+  }
   ?>
+
+<?php for ($row = 0; $row < sizeof($Valorants); $row++) {?>
+    <div class="row">
+      <div class="col-sm-6" style="width:20%">
+        <img class="card-img-top" src="<?php echo $Valorants[$row]["photo"] ?>" alt="Card image" style="width:100px">
+        <div class="card">
+          <div class="card-block">
+            <div class="card-body">
+              <h4 class="card-title"><?php echo $Valorants[$row]["name"] ?></h4>
+              <p class="card-text"><?php echo $Valorants[$row]["characteristics"] ?></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<?php }?>
+
+
+
+
 
 
 </div>
