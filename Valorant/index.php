@@ -1,3 +1,24 @@
+<?php //database connection
+$con = mysqli_connect("localhost","root","","soufiane_db");
+printf ("Our connection is ok!\n"); 
+
+// Check connection
+if (mysqli_connect_errno()) {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  exit();
+}
+$sql = "SELECT * FROM `valorants` WHERE 1";
+$result = mysqli_query($con, $sql);
+if (mysqli_num_rows($result) > 0) {
+  // output data of each row
+  while($row = mysqli_fetch_assoc($result)) {
+    echo $row["name"]."<br>". $row["photo"]. "<br>".  $row["characteristics"]. "<br>";
+  }
+} else {
+  echo "0 results";
+}
+?>
+
 <?php
   $Valorants = json_decode(file_get_contents('C:\wamp64\www\Valorant\data.json'),true);
 ?>
@@ -56,10 +77,6 @@
       </div>
     </div>
 <?php }?>
-
-
-
-
 
 
 </div>
