@@ -25,23 +25,6 @@ $result = mysqli_query($con, $sql);
 </head>
 <body>
 
-<div class="container">
-  <h2>Add a character APP2</h2>
-  <form method="post">
-    <div class="form-group">
-      <label for="name">Name:</label>
-      <input type="text" class="form-control" id="name" name="name">
-    </div>
-    <div class="form-group">
-      <label for="photo">Photo:</label>
-      <input type="text" class="form-control" id="photo" name="photo">
-    </div>
-    <div class="form-group">
-      <label for="characteristics">Characteristics:</label>
-      <input type="text" class="form-control" id="characteristics" name="characteristics">
-    </div>
-    <button type="submit" class="btn btn-primary" name="submit-btn" >Add</button>
-  </form>
 
   <?php
    if (isset($_POST["submit-btn"])) {
