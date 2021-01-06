@@ -37,9 +37,7 @@ $result = mysqli_query($con, $sql);
    }
   ?>
 
-<?php //for ($row = 0; $row < sizeof($Valorants); $row++) {?>
 <?php 
-  
   while($row = mysqli_fetch_assoc($result)) { ?>
     <div class="row">
       <div class="col-sm-6" style="width:20%">
@@ -55,7 +53,6 @@ $result = mysqli_query($con, $sql);
       </div>
     </div>
 <?php }?>
-
 </div>
 </body>
 </html>
